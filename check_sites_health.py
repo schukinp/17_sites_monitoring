@@ -5,23 +5,23 @@ import sys
 
 
 def load_urls4check(path):
-    with open(path, 'r') as file:
-        return file.read().split()
+    with open(path, 'r') as urls:
+        return urls.read().split()
 
 
-def is_server_respond_with_200(file):
+def is_server_respond_with_200(urls):
     response = []
-    for url in file:
+    for url in urls:
         try:
-            response.append(requests.get(url).status_code == 200)
+            response.append(requests.get(url).status_code.ok)
         except ValueError:
             response.append('url don\'t respond')
     return response
 
 
-def get_domain_expiration_date(file, days):
+def get_domain_expiration_date(urls, days):
     response = []
-    for url in file:
+    for url in urls:
         try:
             domain = whois(url)
             response.append((domain.expiration_date + timedelta(days=days)) > datetime.now())
