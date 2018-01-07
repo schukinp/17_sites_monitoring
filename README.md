@@ -11,7 +11,7 @@ URL is OK! if:
 * the domain expiration date is more than [number of days] from now
 
 URL is not OK! if either:
-* response iы not 200
+* response is not 200
 OR URL doesn't respond
 * the domain expiration date is not more than [number of days] from now
 OR impossible to get expiration date
